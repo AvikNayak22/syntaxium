@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
 import Footer from "@/components/Footer";
 
-const poppins = Poppins({
+const rubik = Rubik({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <body
-          className={`${poppins.className} antialiased min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-slate-100 flex flex-col`}
+          className={`${rubik.className} antialiased min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-slate-100 flex flex-col`}
         >
           <ConvexClientProvider>{children}</ConvexClientProvider>
           <Footer />
