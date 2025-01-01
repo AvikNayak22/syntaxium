@@ -21,7 +21,7 @@ const Header = async () => {
   return (
     <div className="relative z-10">
       {/* Main Header Container */}
-      <div className="flex items-center lg:justify-between justify-center bg-zinc-900/80 backdrop-blur-xl p-6 mb-4 rounded-lg">
+      <div className="flex items-center lg:justify-between justify-center bg-zinc-900/80 backdrop-blur-xl p-6 mb-4 rounded-lg ring-1 ring-white/10">
         {/* Left Section - Logo and Navigation (Hidden on mobile) */}
         <div className="hidden lg:flex items-center gap-8">
           {/* Logo and Brand Name */}
@@ -86,17 +86,16 @@ const Header = async () => {
           {!convexUser?.isPro && (
             <Link
               href="/pricing"
-              className="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-white/10 hover:border-white/20 bg-gradient-to-r from-white/5 
-                to-gray-500/5 hover:from-white/10 hover:to-gray-500/10 
+              className="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-white/10 hover:border-white/20 bg-gradient-to-r from-amber-500/20 
+                to-yellow-500/20 hover:from-amber-500/30 hover:to-yellow-500/30 
                 transition-all duration-300"
             >
-              <Sparkles className="w-4 h-4 text-white hover:text-gray-200" />
-              <span className="text-sm font-medium text-white/90 hover:text-white">
+              <Sparkles className="w-4 h-4 text-amber-400 hover:text-yellow-300" />
+              <span className="text-sm font-medium text-amber-400 hover:text-yellow-300">
                 Pro
               </span>
             </Link>
           )}
-
           {/* Run Button - Only visible when signed in */}
           <SignedIn>
             <RunButton />
