@@ -29,7 +29,7 @@ export default function RootLayout({
     >
       <html lang="en">
         <body
-          className={`${rubik.className} antialiased min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-slate-100 flex flex-col`}
+          className={`${rubik.className} antialiased min-h-screen bg-gradient-to-b  from-zinc-950 to-black text-zinc-100 flex flex-col`}
         >
           <ConvexClientProvider>{children}</ConvexClientProvider>
           <Footer />

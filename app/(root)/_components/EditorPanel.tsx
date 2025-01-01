@@ -50,11 +50,11 @@ const EditorPanel = () => {
 
   return (
     <div className="relative">
-      <div className="relative bg-[#12121a]/90 backdrop-blur rounded-xl border border-white/[0.05] p-6">
+      <div className="relative bg-zinc-900 backdrop-blur rounded-xl border border-neutral-800 p-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-[#1e1e2e] ring-1 ring-white/5">
+            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-neutral-900 ring-1 ring-neutral-800">
               <Image
                 src={"/" + language + ".png"}
                 alt="Logo"
@@ -63,16 +63,18 @@ const EditorPanel = () => {
               />
             </div>
             <div>
-              <h2 className="text-sm font-medium text-white">Code Editor</h2>
-              <p className="text-xs text-slate-500">
+              <h2 className="text-sm font-medium text-neutral-200">
+                Code Editor
+              </h2>
+              <p className="text-xs text-neutral-500">
                 Write and execute your code
               </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             {/* Font Size Slider */}
-            <div className="flex items-center gap-3 px-3 py-2 bg-[#1e1e2e] rounded-lg ring-1 ring-white/5">
-              <TypeIcon className="size-4 text-slate-400" />
+            <div className="flex items-center gap-3 px-3 py-2 bg-neutral-900 rounded-lg ring-1 ring-neutral-800">
+              <TypeIcon className="size-4 text-neutral-400" />
               <div className="flex items-center gap-3">
                 <input
                   type="range"
@@ -82,9 +84,9 @@ const EditorPanel = () => {
                   onChange={(e) =>
                     handleFontSizeChange(parseInt(e.target.value))
                   }
-                  className="w-20 h-1 bg-slate-600 rounded-lg cursor-pointer"
+                  className="w-20 h-1 bg-neutral-700 rounded-lg cursor-pointer"
                 />
-                <span className="text-sm font-medium text-slate-400 min-w-[2rem] text-center">
+                <span className="text-sm font-medium text-neutral-400 min-w-[2rem] text-center">
                   {fontSize}
                 </span>
               </div>
@@ -94,10 +96,10 @@ const EditorPanel = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleRefresh}
-              className="p-2 bg-[#1e1e2e] hover:bg-[#2a2a3a] rounded-lg ring-1 ring-white/5 transition-colors"
+              className="p-2 bg-neutral-900 hover:bg-neutral-800 rounded-lg ring-1 ring-neutral-800 transition-colors"
               aria-label="Reset to default code"
             >
-              <RotateCcwIcon className="size-4 text-slate-400" />
+              <RotateCcwIcon className="size-4 text-neutral-400" />
             </motion.button>
 
             {/* Share Button */}
@@ -105,17 +107,16 @@ const EditorPanel = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsShareDialogOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-gradient-to-r
-               from-blue-500 to-blue-600 opacity-90 hover:opacity-100 transition-opacity"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-white text-black hover:bg-neutral-200 transition-colors"
             >
-              <ShareIcon className="size-4 text-white" />
-              <span className="text-sm font-medium text-white ">Share</span>
+              <ShareIcon className="size-4" />
+              <span className="text-sm font-medium">Share</span>
             </motion.button>
           </div>
         </div>
 
         {/* Editor */}
-        <div className="relative group rounded-xl overflow-hidden ring-1 ring-white/[0.05]">
+        <div className="relative group rounded-xl overflow-hidden ring-1 ring-neutral-800">
           {clerk.loaded && (
             <Editor
               height="600px"

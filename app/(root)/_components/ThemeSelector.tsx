@@ -53,23 +53,23 @@ const ThemeSelector = () => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-48 group relative flex items-center gap-2 px-4 py-2.5 bg-[#1e1e2e]/80 hover:bg-[#262637] 
-        rounded-lg transition-all duration-200 border border-slate-800/50 hover:border-slate-700"
+        className="w-48 group relative flex items-center gap-2 px-4 py-2.5 bg-zinc-800/90 hover:bg-zinc-800/70 
+        rounded-lg transition-all duration-200 border border-white/10 hover:border-white/20"
       >
         {/* Hover state background decorator */}
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-purple-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-neutral-400/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
 
         {/* Theme icon */}
-        <Palette className="w-4 h-4 text-slate-400 group-hover:text-slate-300 transition-colors" />
+        <Palette className="w-4 h-4 text-neutral-400 group-hover:text-neutral-300 transition-colors" />
 
         {/* Theme label */}
-        <span className="text-slate-300 min-w-[80px] text-left group-hover:text-white transition-colors">
+        <span className="text-neutral-300 min-w-[80px] text-left group-hover:text-white transition-colors">
           {currentTheme?.label}
         </span>
 
         {/* Theme color indicator */}
         <div
-          className="relative w-4 h-4 rounded-full border border-slate-600 group-hover:border-slate-500 transition-colors"
+          className="relative w-4 h-4 rounded-full border border-neutral-600 group-hover:border-neutral-500 transition-colors"
           style={{ background: currentTheme?.color }}
         />
       </motion.button>
@@ -82,12 +82,12 @@ const ThemeSelector = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-[#1e1e2e]/95 
-            backdrop-blur-xl rounded-xl border border-[#313244] shadow-2xl py-2 z-50"
+            className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-black/95 
+            backdrop-blur-xl rounded-xl border border-neutral-800 shadow-2xl py-2 z-50"
           >
             {/* Dropdown header */}
-            <div className="px-2 pb-2 mb-2 border-b border-slate-800/50">
-              <p className="text-xs font-medium text-slate-400 px-2">
+            <div className="px-2 pb-2 mb-2 border-b border-neutral-800">
+              <p className="text-xs font-medium text-neutral-400 px-2">
                 Select Theme
               </p>
             </div>
@@ -100,14 +100,14 @@ const ThemeSelector = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: index * 0.1 }}
                 className={`
-                relative group w-full flex items-center gap-3 px-3 py-2.5 hover:bg-[#262637] transition-all duration-200
-                ${theme === t.id ? "bg-emerald-500/10 text-emerald-400" : "text-slate-300"}
+                relative group w-full flex items-center gap-3 px-3 py-2.5 hover:bg-neutral-900 transition-all duration-200
+                ${theme === t.id ? "bg-neutral-800 text-white" : "text-neutral-300"}
               `}
                 onClick={() => setTheme(t.id)}
               >
                 {/* Theme option background gradient */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-purple-500/5 opacity-0 
+                  className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-neutral-400/5 opacity-0 
               group-hover:opacity-100 transition-opacity"
                 />
 
@@ -115,7 +115,7 @@ const ThemeSelector = () => {
                 <div
                   className={`
                 flex items-center justify-center size-8 rounded-lg
-                ${theme === t.id ? "bg-emerald-500/10 text-emerald-400" : "bg-slate-800/50 text-slate-400"}
+                ${theme === t.id ? "bg-white/10 text-white" : "bg-neutral-800/50 text-neutral-400"}
                 group-hover:scale-110 transition-all duration-200
               `}
                 >
@@ -129,15 +129,15 @@ const ThemeSelector = () => {
 
                 {/* Theme option color indicator */}
                 <div
-                  className="relative size-4 rounded-full border border-slate-600 
-                group-hover:border-slate-500 transition-colors"
+                  className="relative size-4 rounded-full border border-neutral-600 
+                group-hover:border-neutral-500 transition-colors"
                   style={{ background: t.color }}
                 />
 
                 {/* Active theme indicator */}
                 {theme === t.id && (
                   <motion.div
-                    className="absolute inset-0 border-2 border-emerald-500/30 rounded-lg"
+                    className="absolute inset-0 border-2 border-white/20 rounded-lg"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}

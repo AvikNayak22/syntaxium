@@ -28,21 +28,21 @@ const OutputPanel = () => {
   };
 
   return (
-    <div className="relative bg-[#181825] rounded-xl p-4 ring-1 ring-slate-800/50">
+    <div className="relative bg-zinc-900 rounded-xl p-4 ring-1 ring-white/10">
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-[#1e1e2e] ring-1 ring-slate-800/50">
-            <Terminal className="w-4 h-4 text-emerald-400" />
+          <div className="flex items-center justify-center w-6 h-6 rounded-lg bg-zinc-900 ring-1 ring-white/10">
+            <Terminal className="w-4 h-4 text-white" />
           </div>
-          <span className="text-sm font-medium text-slate-300">Output</span>
+          <span className="text-sm font-medium text-white">Output</span>
         </div>
 
         {hasContent && (
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-slate-400 hover:text-slate-300 bg-[#1e1e2e] 
-            rounded-lg ring-1 ring-slate-800/50 hover:ring-slate-700/50 transition-all"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-zinc-400 hover:text-white bg-zinc-900 
+            rounded-lg ring-1 ring-white/10 hover:ring-white/20 transition-all"
           >
             {isCopied ? (
               <>
@@ -62,7 +62,7 @@ const OutputPanel = () => {
       {/* Output Area */}
       <div className="relative">
         <div
-          className="relative bg-[#1e1e2e]/50 backdrop-blur-sm border border-[#313244] 
+          className="relative bg-zinc-950 border border-white/10 
         rounded-xl p-4 h-[600px] overflow-auto font-mono text-sm"
         >
           {isRunning ? (
@@ -79,15 +79,15 @@ const OutputPanel = () => {
             </div>
           ) : output ? (
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-emerald-400 mb-3">
+              <div className="flex items-center gap-2 text-green-400 mb-3">
                 <CheckCircle className="w-5 h-5" />
                 <span className="font-medium">Execution Successful</span>
               </div>
-              <pre className="whitespace-pre-wrap text-slate-300">{output}</pre>
+              <pre className="whitespace-pre-wrap text-white">{output}</pre>
             </div>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center text-slate-500">
-              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-slate-800/50 ring-1 ring-slate-700/50 mb-4">
+            <div className="h-full flex flex-col items-center justify-center text-zinc-500">
+              <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-zinc-800 ring-1 ring-white/10 mb-4">
                 <Clock className="w-6 h-6" />
               </div>
               <p className="text-center">

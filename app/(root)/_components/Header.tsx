@@ -2,7 +2,7 @@ import { api } from "@/convex/_generated/api";
 import { SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { ConvexHttpClient } from "convex/browser";
-import { Blocks, Code2, Sparkles } from "lucide-react";
+import { Code2, Sparkles, Terminal } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import ThemeSelector from "./ThemeSelector";
@@ -21,30 +21,30 @@ const Header = async () => {
   return (
     <div className="relative z-10">
       {/* Main Header Container */}
-      <div className="flex items-center lg:justify-between justify-center bg-[#0a0a0f]/80 backdrop-blur-xl p-6 mb-4 rounded-lg">
+      <div className="flex items-center lg:justify-between justify-center bg-zinc-900/80 backdrop-blur-xl p-6 mb-4 rounded-lg">
         {/* Left Section - Logo and Navigation (Hidden on mobile) */}
         <div className="hidden lg:flex items-center gap-8">
           {/* Logo and Brand Name */}
           <Link href="/" className="flex items-center gap-3 group relative">
             {/* Gradient Background Effect */}
             <div
-              className="absolute -inset-2 bg-gradient-to-r from-emerald-500/20 to-purple-500/20 rounded-lg opacity-0 
+              className="absolute -inset-2 bg-gradient-to-r from-white/10 to-gray-500/10 rounded-lg opacity-0 
                 group-hover:opacity-100 transition-all duration-500 blur-xl"
             />
             {/* Logo Container */}
             <div
-              className="relative bg-gradient-to-br from-[#1a1a2e] to-[#0a0a0f] p-2 rounded-xl ring-1
+              className="relative bg-gradient-to-br from-black to-zinc-900 p-2 rounded-xl ring-1
               ring-white/10 group-hover:ring-white/20 transition-all"
             >
-              <Blocks className="size-6 text-emerald-400 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500" />
+              <Terminal className="size-6 text-white transform hover:rotate-6 transition-transform duration-500" />
             </div>
 
             {/* Brand Text */}
             <div className="flex flex-col">
-              <span className="block text-lg font-semibold bg-gradient-to-r from-emerald-400 via-emerald-300 to-purple-400 text-transparent bg-clip-text">
+              <span className="block text-lg font-semibold text-white">
                 Syntaxium
               </span>
-              <span className="block text-xs text-emerald-400/60 font-medium">
+              <span className="block text-xs text-gray-400 font-medium">
                 Interactive Code Editor
               </span>
             </div>
@@ -55,13 +55,13 @@ const Header = async () => {
             {/* Snippets Link */}
             <Link
               href="/snippets"
-              className="relative group flex items-center gap-2 px-4 py-1.5 rounded-lg text-slate-300 bg-slate-800/50 
-                hover:bg-emerald-500/10 border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 shadow-lg overflow-hidden"
+              className="relative group flex items-center gap-2 px-4 py-1.5 rounded-lg text-gray-300 bg-zinc-800/60 
+                hover:bg-white/10 border border-zinc-800 hover:border-white/20 transition-all duration-300 shadow-lg overflow-hidden"
             >
               {/* Hover Gradient Effect */}
               <div
-                className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 
-                to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 bg-gradient-to-r from-white/5 
+                to-gray-500/5 opacity-0 group-hover:opacity-100 transition-opacity"
               />
               <Code2 className="w-4 h-4 relative z-10 group-hover:rotate-3 transition-transform" />
               <span
@@ -86,12 +86,12 @@ const Header = async () => {
           {!convexUser?.isPro && (
             <Link
               href="/pricing"
-              className="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-amber-500/20 hover:border-amber-500/40 bg-gradient-to-r from-amber-500/10 
-                to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20 
+              className="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-white/10 hover:border-white/20 bg-gradient-to-r from-white/5 
+                to-gray-500/5 hover:from-white/10 hover:to-gray-500/10 
                 transition-all duration-300"
             >
-              <Sparkles className="w-4 h-4 text-amber-400 hover:text-amber-300" />
-              <span className="text-sm font-medium text-amber-400/90 hover:text-amber-300">
+              <Sparkles className="w-4 h-4 text-white hover:text-gray-200" />
+              <span className="text-sm font-medium text-white/90 hover:text-white">
                 Pro
               </span>
             </Link>
@@ -103,7 +103,7 @@ const Header = async () => {
           </SignedIn>
 
           {/* Profile Button Section */}
-          <div className="pl-3 border-l border-slate-800">
+          <div className="pl-3 border-l border-zinc-800">
             <HeaderProfileButton />
           </div>
         </div>
