@@ -1,8 +1,5 @@
-import { api } from "@/convex/_generated/api";
 import { SignedIn } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
-import { ConvexHttpClient } from "convex/browser";
-import { Code2, Sparkles, Terminal } from "lucide-react";
+import { Code2, Terminal } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import ThemeSelector from "./ThemeSelector";
@@ -11,13 +8,6 @@ import RunButton from "./RunButton";
 import HeaderProfileButton from "./HeaderProfileButton";
 
 const Header = async () => {
-  const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
-  const user = await currentUser();
-
-  const convexUser = await convex.query(api.users.getUser, {
-    userId: user?.id || "",
-  });
-
   return (
     <div className="relative z-10">
       {/* Main Header Container */}
@@ -79,23 +69,9 @@ const Header = async () => {
           {/* Theme and Language Selectors */}
           <div className="flex items-center gap-3">
             <ThemeSelector />
-            <LanguageSelector hasAccess={Boolean(convexUser?.isPro)} />
+            <LanguageSelector />
           </div>
 
-          {/* Pro Subscription Button - Only shown for non-pro users */}
-          {!convexUser?.isPro && (
-            <Link
-              href="/pricing"
-              className="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-white/10 hover:border-white/20 bg-gradient-to-r from-amber-500/20 
-                to-yellow-500/20 hover:from-amber-500/30 hover:to-yellow-500/30 
-                transition-all duration-300"
-            >
-              <Sparkles className="w-4 h-4 text-amber-400 hover:text-yellow-300" />
-              <span className="text-sm font-medium text-amber-400 hover:text-yellow-300">
-                Pro
-              </span>
-            </Link>
-          )}
           {/* Run Button - Only visible when signed in */}
           <SignedIn>
             <RunButton />

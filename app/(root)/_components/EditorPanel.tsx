@@ -116,7 +116,7 @@ const EditorPanel = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setIsShareDialogOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-white text-black hover:bg-neutral-200 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-white text-black transition-colors"
             >
               <Share2 className="size-4" />
               <span className="text-sm font-medium">Share</span>

@@ -5,10 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LANGUAGE_CONFIG } from "../_constants";
 import Image from "next/image";
-import { ChevronDownIcon, Lock, Sparkles } from "lucide-react";
+import { ChevronDownIcon, Sparkles } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 
-const LanguageSelector = ({ hasAccess }: { hasAccess: boolean }) => {
+const LanguageSelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { language, setLanguage } = useCodeEditorStore();
   const mounted = useMounted();
@@ -30,8 +30,6 @@ const LanguageSelector = ({ hasAccess }: { hasAccess: boolean }) => {
   }, []);
 
   const handleLanguageSelect = (langId: string) => {
-    if (!hasAccess && langId !== "javascript") return;
-
     setLanguage(langId);
     setIsOpen(false);
   };
@@ -47,8 +45,7 @@ const LanguageSelector = ({ hasAccess }: { hasAccess: boolean }) => {
         onClick={() => setIsOpen(!isOpen)}
         className={`group relative flex items-center gap-3 px-4 py-2.5 bg-zinc-800/90 
       rounded-lg transition-all 
-       duration-200 border border-white/10 hover:border-white/20
-       ${!hasAccess && language !== "javascript" ? "opacity-50 cursor-not-allowed" : ""}`}
+       duration-200 border border-white/10 hover:border-white/20`}
       >
         {/* Hover gradient effect */}
         <div
@@ -100,83 +97,74 @@ const LanguageSelector = ({ hasAccess }: { hasAccess: boolean }) => {
 
             {/* Language options list */}
             <div className="max-h-[280px] overflow-y-auto overflow-x-hidden">
-              {Object.values(LANGUAGE_CONFIG).map((lang, index) => {
-                const isLocked = !hasAccess && lang.id !== "javascript";
-
-                return (
-                  <motion.div
-                    key={lang.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative group px-2"
-                  >
-                    {/* Language option button */}
-                    <button
-                      className={`
+              {Object.values(LANGUAGE_CONFIG).map((lang, index) => (
+                <motion.div
+                  key={lang.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative group px-2"
+                >
+                  {/* Language option button */}
+                  <button
+                    className={`
                       relative w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200
                       ${language === lang.id ? "bg-neutral-500/10 text-neutral-400" : "text-white/80"}
-                      ${isLocked ? "opacity-50" : "hover:bg-white/5"}
+                      hover:bg-white/5
                     `}
-                      onClick={() => handleLanguageSelect(lang.id)}
-                      disabled={isLocked}
-                    >
-                      {/* Hover gradient effect */}
-                      <div
-                        className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-violet-500/5 rounded-lg 
+                    onClick={() => handleLanguageSelect(lang.id)}
+                  >
+                    {/* Hover gradient effect */}
+                    <div
+                      className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-violet-500/5 rounded-lg 
                       opacity-0 group-hover:opacity-100 transition-opacity"
-                      />
+                    />
 
-                      {/* Language logo container */}
-                      <div
-                        className={`
+                    {/* Language logo container */}
+                    <div
+                      className={`
                          relative size-8 rounded-lg p-1.5 group-hover:scale-110 transition-transform
                          ${language === lang.id ? "bg-neutral-500/10" : "bg-white/5"}
                        `}
-                      >
-                        {/* Logo background gradient */}
-                        <div
-                          className="absolute inset-0 bg-gradient-to-br from-neutral-500/10 to-violet-500/10 rounded-lg 
+                    >
+                      {/* Logo background gradient */}
+                      <div
+                        className="absolute inset-0 bg-gradient-to-br from-neutral-500/10 to-violet-500/10 rounded-lg 
                         opacity-0 group-hover:opacity-100 transition-opacity"
-                        />
-                        <Image
-                          width={24}
-                          height={24}
-                          src={lang.logoPath}
-                          alt={`${lang.label} logo`}
-                          className="w-full h-full object-contain relative z-10"
-                        />
-                      </div>
+                      />
+                      <Image
+                        width={24}
+                        height={24}
+                        src={lang.logoPath}
+                        alt={`${lang.label} logo`}
+                        className="w-full h-full object-contain relative z-10"
+                      />
+                    </div>
 
-                      {/* Language name */}
-                      <span className="flex-1 text-left group-hover:text-white transition-colors">
-                        {lang.label}
-                      </span>
+                    {/* Language name */}
+                    <span className="flex-1 text-left group-hover:text-white transition-colors">
+                      {lang.label}
+                    </span>
 
-                      {/* Selected language indicator */}
-                      {language === lang.id && (
-                        <motion.div
-                          className="absolute inset-0 border-2 border-neutral-500/30 rounded-lg"
-                          transition={{
-                            type: "spring",
-                            bounce: 0.2,
-                            duration: 0.6,
-                          }}
-                        />
-                      )}
+                    {/* Selected language indicator */}
+                    {language === lang.id && (
+                      <motion.div
+                        className="absolute inset-0 border-2 border-neutral-500/30 rounded-lg"
+                        transition={{
+                          type: "spring",
+                          bounce: 0.2,
+                          duration: 0.6,
+                        }}
+                      />
+                    )}
 
-                      {/* Status icon (lock or sparkles) */}
-                      {isLocked ? (
-                        <Lock className="w-4 h-4 text-white/40" />
-                      ) : (
-                        language === lang.id && (
-                          <Sparkles className="w-4 h-4 text-neutral-400 animate-pulse" />
-                        )
-                      )}
-                    </button>
-                  </motion.div>
-                );
-              })}
+                    {/* Status icon (sparkles) */}
+                    {language === lang.id && (
+                      <Sparkles className="w-4 h-4 text-neutral-400 animate-pulse" />
+                    )}
+                  </button>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         )}
