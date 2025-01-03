@@ -3,7 +3,13 @@
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useEffect, useState } from "react";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
-import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
+import {
+  MinusIcon,
+  PlusIcon,
+  RefreshCcw,
+  Share2,
+  TypeIcon,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Editor } from "@monaco-editor/react";
@@ -72,26 +78,29 @@ const EditorPanel = () => {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            {/* Font Size Slider */}
+            {/* Font Size Controls */}
             <div className="flex items-center gap-3 px-3 py-2 bg-neutral-900 rounded-lg ring-1 ring-neutral-800">
               <TypeIcon className="size-4 text-neutral-400" />
               <div className="flex items-center gap-3">
-                <input
-                  type="range"
-                  min="12"
-                  max="24"
-                  value={fontSize}
-                  onChange={(e) =>
-                    handleFontSizeChange(parseInt(e.target.value))
-                  }
-                  className="w-20 h-1 bg-neutral-700 rounded-lg cursor-pointer"
-                />
+                <button
+                  onClick={() => handleFontSizeChange(fontSize - 1)}
+                  className="p-1 ring-1 ring-neutral-800 hover:bg-neutral-800 rounded"
+                >
+                  <MinusIcon className="size-4 text-neutral-400" />
+                </button>
                 <span className="text-sm font-medium text-neutral-400 min-w-[2rem] text-center">
                   {fontSize}
                 </span>
+                <button
+                  onClick={() => handleFontSizeChange(fontSize + 1)}
+                  className="p-1 ring-1 ring-neutral-800 hover:bg-neutral-800 rounded"
+                >
+                  <PlusIcon className="size-4 text-neutral-400" />
+                </button>
               </div>
             </div>
 
+            {/* Refesh Code Button */}
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
@@ -99,7 +108,7 @@ const EditorPanel = () => {
               className="p-2 bg-neutral-900 hover:bg-neutral-800 rounded-lg ring-1 ring-neutral-800 transition-colors"
               aria-label="Reset to default code"
             >
-              <RotateCcwIcon className="size-4 text-neutral-400" />
+              <RefreshCcw className="size-4 text-neutral-400" />
             </motion.button>
 
             {/* Share Button */}
@@ -109,7 +118,7 @@ const EditorPanel = () => {
               onClick={() => setIsShareDialogOpen(true)}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-white text-black hover:bg-neutral-200 transition-colors"
             >
-              <ShareIcon className="size-4" />
+              <Share2 className="size-4" />
               <span className="text-sm font-medium">Share</span>
             </motion.button>
           </div>
