@@ -25,8 +25,8 @@ function Footer() {
               <span className="text-xl font-bold">Syntaxium</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed">
-              Code smarter with Syntaxium. Your productivity-focused code editor
-              for a seamless development experience.
+              Master coding through practice, with a platform designed for
+              simplicity and focus.
             </p>
           </div>
 

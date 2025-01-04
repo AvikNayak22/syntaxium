@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
+import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 
 const rubik = Rubik({
@@ -33,6 +34,14 @@ export default function RootLayout({
         >
           <ConvexClientProvider>{children}</ConvexClientProvider>
           <Footer />
+          <Toaster
+            toastOptions={{
+              style: {
+                background: "#151518",
+                color: "#fff",
+              },
+            }}
+          />
         </body>
       </html>
     </ClerkProvider>
