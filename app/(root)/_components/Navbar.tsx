@@ -11,7 +11,7 @@ export function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Terminal className="h-5 w-5 text-blue-500" />
+            <Terminal className="h-5 w-5 text-white" />
             <span className="text-lg font-medium text-white">Syntaxium</span>
           </div>
 
