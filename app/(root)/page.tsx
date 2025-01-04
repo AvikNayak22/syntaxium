@@ -1,18 +1,15 @@
-import EditorPanel from "@/app/(root)/_components/EditorPanel";
-import Header from "@/app/(root)/_components/Header";
-import OutputPanel from "@/app/(root)/_components/OutputPanel";
+import { FAQ } from "./_components/FAQ";
+import { Navbar } from "./_components/Navbar";
+import { Features } from "./_components/Features";
+import Hero from "./_components/Hero";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-[1800px] mx-auto p-4">
-        <Header />
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <EditorPanel />
-          <OutputPanel />
-        </div>
-      </div>
+    <div className="min-h-screen bg-black">
+      <Navbar />
+      <Hero />
+      <Features />
+      <FAQ />
     </div>
   );
 }
