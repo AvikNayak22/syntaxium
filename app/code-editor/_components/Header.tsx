@@ -11,9 +11,9 @@ const Header = async () => {
   return (
     <div className="relative z-10">
       {/* Main Header Container */}
-      <div className="flex items-center lg:justify-between justify-center bg-zinc-900/80 backdrop-blur-xl p-6 mb-4 rounded-lg ring-1 ring-white/10">
+      <div className="flex items-center md:justify-between justify-center bg-zinc-900/80 backdrop-blur-xl p-6 mb-4 rounded-lg ring-1 ring-white/10">
         {/* Left Section - Logo and Navigation (Hidden on mobile) */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="flex items-center gap-8">
           {/* Logo and Brand Name */}
           <Link href="/" className="flex items-center gap-3 group relative">
             {/* Gradient Background Effect */}
@@ -45,7 +45,7 @@ const Header = async () => {
             {/* Snippets Link */}
             <Link
               href="/snippets"
-              className="relative group flex items-center gap-2 px-4 py-1.5 rounded-lg text-gray-300 bg-zinc-800/60 
+              className="relative group hidden md:flex items-center gap-2 px-4 py-1.5 rounded-lg text-gray-300 bg-zinc-800/60 
                 hover:bg-white/10 border border-zinc-800 hover:border-white/20 transition-all duration-300 shadow-lg overflow-hidden"
             >
               {/* Hover Gradient Effect */}
@@ -67,7 +67,7 @@ const Header = async () => {
         {/* Right Section - Theme, Language, Pro Button, and Profile */}
         <div className="flex items-center gap-4">
           {/* Theme and Language Selectors */}
-          <div className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <ThemeSelector />
             <LanguageSelector />
           </div>
@@ -78,7 +78,7 @@ const Header = async () => {
           </SignedIn>
 
           {/* Profile Button Section */}
-          <div className="pl-3 border-l border-zinc-800">
+          <div className="flex pl-3 border-l border-zinc-800">
             <HeaderProfileButton />
           </div>
         </div>

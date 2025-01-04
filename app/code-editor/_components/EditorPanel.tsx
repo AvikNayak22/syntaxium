@@ -7,6 +7,7 @@ import {
   MinusIcon,
   PlusIcon,
   RefreshCcw,
+  Settings,
   Share2,
   TypeIcon,
 } from "lucide-react";
@@ -68,18 +69,18 @@ const EditorPanel = () => {
                 height={24}
               />
             </div>
-            <div>
+            <div className="">
               <h2 className="text-sm font-medium text-neutral-200">
                 Code Editor
               </h2>
-              <p className="text-xs text-neutral-500">
+              <p className="hidden md:block text-xs text-neutral-500">
                 Write and execute your code
               </p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             {/* Font Size Controls */}
-            <div className="flex items-center gap-3 px-3 py-2 bg-neutral-900 rounded-lg ring-1 ring-neutral-800">
+            <div className="hidden md:flex items-center gap-3 px-3 py-2 bg-neutral-900 rounded-lg ring-1 ring-neutral-800">
               <TypeIcon className="size-4 text-neutral-400" />
               <div className="flex items-center gap-3">
                 <button
@@ -109,6 +110,16 @@ const EditorPanel = () => {
               aria-label="Reset to default code"
             >
               <RefreshCcw className="size-4 text-neutral-400" />
+            </motion.button>
+
+            {/* Settings Button */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="block lg:hidden p-2 bg-neutral-900 hover:bg-neutral-800 rounded-lg ring-1 ring-neutral-800 transition-colors"
+              aria-label="Editor Settings"
+            >
+              <Settings className="size-4 text-neutral-400" />
             </motion.button>
 
             {/* Share Button */}

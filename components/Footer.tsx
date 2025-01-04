@@ -7,7 +7,7 @@ function Footer() {
     { name: "GitHub", href: "https://github.com" },
     { name: "LinkedIn", href: "https://linkedin.com" },
   ];
-  const SiteMapItems = ["About Us", "Features", "Pricing", "Contact", "Blog"];
+  const SiteMapItems = ["About Us", "Contact", "Blog"];
   const legalItems = ["Terms of Service", "Privacy Policy"];
 
   return (

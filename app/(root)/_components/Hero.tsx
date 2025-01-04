@@ -7,7 +7,7 @@ const Hero = () => {
   const router = useRouter();
 
   return (
-    <div className="relative w-full overflow-hidden bg-black min-h-screen">
+    <div className="relative w-full overflow-hidden bg-black min-h-[70vh] lg:min-h-screen">
       {/* Grid background */}
       <div
         className="absolute inset-0"
