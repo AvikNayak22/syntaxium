@@ -21,9 +21,6 @@ const Hero = () => {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
 
-      {/* gradient glow */}
-      <div className="absolute top-[-50%] -left-[10%] right-0 h-[200%] w-[120%] rotate-12 bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-
       {/* Content container */}
       <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-24 sm:pt-40 lg:px-8">
         <div className="flex flex-col items-center text-center">

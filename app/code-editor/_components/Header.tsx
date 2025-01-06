@@ -64,7 +64,7 @@ const Header = async () => {
           </nav>
         </div>
 
-        {/* Right Section - Theme, Language, Pro Button, and Profile */}
+        {/* Right Section - Theme, Language, and Profile */}
         <div className="flex items-center gap-4">
           {/* Theme and Language Selectors */}
           <div className="hidden lg:flex items-center gap-3">
