@@ -3,14 +3,7 @@
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useEffect, useState } from "react";
 import { defineMonacoThemes, LANGUAGE_CONFIG } from "../_constants";
-import {
-  MinusIcon,
-  PlusIcon,
-  RefreshCcw,
-  Settings,
-  Share2,
-  TypeIcon,
-} from "lucide-react";
+import { RefreshCcw, Settings, Share2 } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Editor } from "@monaco-editor/react";
@@ -18,10 +11,13 @@ import { useClerk } from "@clerk/nextjs";
 import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/hooks/useMounted";
 import ShareSnippetDialog from "./ShareSnippetDialog";
+import SettingsDialog from "./SettingsDialog";
+import FontSizeControls from "./FontSizeControls";
 
 const EditorPanel = () => {
   const clerk = useClerk();
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
+  const [isSettingsDialogOpen, setIsSettingsDialogOpen] = useState(false);
   const { language, theme, fontSize, setFontSize, editor, setEditor } =
     useCodeEditorStore();
   const mounted = useMounted();
@@ -46,12 +42,6 @@ const EditorPanel = () => {
 
   const handleEditorChange = (value: string | undefined) => {
     if (value) localStorage.setItem(`editor-code-${language}`, value);
-  };
-
-  const handleFontSizeChange = (newSize: number) => {
-    const size = Math.min(Math.max(newSize, 10), 24);
-    setFontSize(size);
-    localStorage.setItem("editor-font-size", size.toString());
   };
 
   if (!mounted) return null;
@@ -81,25 +71,8 @@ const EditorPanel = () => {
           </div>
           <div className="flex items-center gap-3">
             {/* Font Size Controls */}
-            <div className="hidden md:flex items-center gap-3 px-3 py-2 bg-neutral-900 rounded-lg ring-1 ring-neutral-800">
-              <TypeIcon className="size-4 text-neutral-400" />
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => handleFontSizeChange(fontSize - 1)}
-                  className="p-1 ring-1 ring-neutral-800 hover:bg-neutral-800 rounded"
-                >
-                  <MinusIcon className="size-4 text-neutral-400" />
-                </button>
-                <span className="text-sm font-medium text-neutral-400 min-w-[2rem] text-center">
-                  {fontSize}
-                </span>
-                <button
-                  onClick={() => handleFontSizeChange(fontSize + 1)}
-                  className="p-1 ring-1 ring-neutral-800 hover:bg-neutral-800 rounded"
-                >
-                  <PlusIcon className="size-4 text-neutral-400" />
-                </button>
-              </div>
+            <div className="hidden md:block">
+              <FontSizeControls />
             </div>
 
             {/* Refesh Code Button */}
@@ -119,6 +92,7 @@ const EditorPanel = () => {
               whileTap={{ scale: 0.95 }}
               className="block lg:hidden p-2 bg-neutral-900 hover:bg-neutral-800 rounded-lg ring-1 ring-neutral-800 transition-colors"
               aria-label="Editor Settings"
+              onClick={() => setIsSettingsDialogOpen(true)}
             >
               <Settings className="size-4 text-neutral-400" />
             </motion.button>
@@ -131,7 +105,7 @@ const EditorPanel = () => {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg overflow-hidden bg-white text-black transition-colors"
             >
               <Share2 className="size-4" />
-              <span className="text-sm font-medium">Share</span>
+              <span className="text-sm font-medium hidden md:block">Share</span>
             </motion.button>
           </div>
         </div>
@@ -175,6 +149,10 @@ const EditorPanel = () => {
       </div>
       {isShareDialogOpen && (
         <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />
+      )}
+
+      {isSettingsDialogOpen && (
+        <SettingsDialog onClose={() => setIsSettingsDialogOpen(false)} />
       )}
     </div>
   );

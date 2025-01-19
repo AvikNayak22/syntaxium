@@ -82,7 +82,7 @@ const ThemeSelector = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-black/95 
+            className="absolute top-full left-0 mt-2  w-52 md:w-full min-w-[240px] bg-black/95 
             backdrop-blur-xl rounded-xl border border-neutral-800 shadow-2xl py-2 z-50"
           >
             {/* Dropdown header */}

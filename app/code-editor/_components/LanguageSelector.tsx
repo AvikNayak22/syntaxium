@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LANGUAGE_CONFIG } from "../_constants";
 import Image from "next/image";
-import { ChevronDownIcon, Sparkles } from "lucide-react";
+import { ChevronDownIcon } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 
 const LanguageSelector = () => {
@@ -48,11 +48,7 @@ const LanguageSelector = () => {
        duration-200 border border-white/10 hover:border-white/20`}
       >
         {/* Hover gradient effect */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-neutral-500/10 to-violet-500/5 
-        rounded-lg opacity-0 group-hover:opacity-100 transition-opacity"
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-neutral-400/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity" />
 
         {/* Language logo container */}
         <div className="size-6 rounded-md bg-white/5 p-0.5 group-hover:scale-110 transition-transform">
@@ -109,14 +105,14 @@ const LanguageSelector = () => {
                   <button
                     className={`
                       relative w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200
-                      ${language === lang.id ? "bg-neutral-500/10 text-neutral-400" : "text-white/80"}
-                      hover:bg-white/5
+                      ${language === lang.id ? "bg-neutral-800 text-neutral-400" : "text-white/80"}
+                      hover:bg-neutral-900
                     `}
                     onClick={() => handleLanguageSelect(lang.id)}
                   >
                     {/* Hover gradient effect */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-violet-500/5 rounded-lg 
+                      className="absolute inset-0 bg-gradient-to-r from-neutral-500/5 to-neutral-400/5 rounded-lg 
                       opacity-0 group-hover:opacity-100 transition-opacity"
                     />
 
@@ -149,18 +145,13 @@ const LanguageSelector = () => {
                     {/* Selected language indicator */}
                     {language === lang.id && (
                       <motion.div
-                        className="absolute inset-0 border-2 border-neutral-500/30 rounded-lg"
+                        className="absolute inset-0 border-2 border-white/20 rounded-lg"
                         transition={{
                           type: "spring",
                           bounce: 0.2,
                           duration: 0.6,
                         }}
                       />
-                    )}
-
-                    {/* Status icon (sparkles) */}
-                    {language === lang.id && (
-                      <Sparkles className="w-4 h-4 text-neutral-400 animate-pulse" />
                     )}
                   </button>
                 </motion.div>
