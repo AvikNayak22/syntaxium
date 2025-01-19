@@ -54,16 +54,6 @@ export const deleteSnippet = mutation({
       throw new ConvexError("You are not authorized to delete this snippet");
     }
 
-    const comments = await ctx.db
-      .query("snippetComments")
-      .withIndex("by_snippet_id")
-      .filter((q) => q.eq(q.field("snippetId"), args.snippetId))
-      .collect();
-
-    for (const comment of comments) {
-      await ctx.db.delete(comment._id);
-    }
-
     const stars = await ctx.db
       .query("stars")
       .withIndex("by_snippet_id")
@@ -113,6 +103,18 @@ export const getSnippets = query({
   handler: async (ctx) => {
     const snippets = await ctx.db.query("snippets").order("desc").collect();
     return snippets;
+  },
+});
+
+export const getSnippetById = query({
+  args: {
+    snippetId: v.id("snippets"),
+  },
+  handler: async (ctx, args) => {
+    const snippet = await ctx.db.get(args.snippetId);
+    if (!snippet) throw new ConvexError("Snippet not found");
+
+    return snippet;
   },
 });
 

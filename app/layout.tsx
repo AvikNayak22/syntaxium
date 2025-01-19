@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Rethink_Sans } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
@@ -7,9 +7,9 @@ import ConvexClientProvider from "@/components/providers/ConvexClientProvider";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
 
-const rubik = Rubik({
+const rubik = Rethink_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
