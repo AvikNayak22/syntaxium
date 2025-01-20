@@ -13,8 +13,27 @@ Syntaxium is a web-based code editor and execution platform that allows users to
 
 ## Tech Stack
 
-- **Frontend**: React.js, Monaco Editor, Next.js, Zustand, Tailwind CSS
-- **Backend**: Convex (Database & Serverless Functions), Clerk (Authentication), Piston API (Code Execution)
+- **Frontend**:  
+  - **React.js**: A powerful JavaScript library for building user interfaces.
+  - **Next.js**: A React framework for building server-side rendered applications.
+  - **Monaco Editor**: A lightweight code editor for syntax highlighting and code completion.
+  - **Tailwind CSS**: A utility-first CSS framework for fast and responsive UI design.
+  - **Chakra UI**: A simple, modular, and accessible component library for React.
+
+- **Backend**:  
+  - **Convex**: A serverless database platform for handling data and real-time operations.
+  - **Piston API**: Executes code in various programming languages, providing real-time code execution and feedback.
+  - **Clerk**: Simplifies user authentication, providing secure login and user management.
+
+- **State Management**:  
+  - **Zustand**: A lightweight state management solution for React with minimal boilerplate.
+  
+- **Authentication**:  
+  - **Clerk**: Secure, user-friendly authentication with built-in features for managing user sessions and permissions.
+
+- **Deployment**:  
+  - **Vercel**: Cloud platform for deploying and hosting Next.js applications with automatic scaling.
+
 
 ## Usage
 
