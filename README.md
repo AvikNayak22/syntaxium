@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Syntaxium
 
-## Getting Started
+Syntaxium is a web-based code editor and execution platform that allows users to write, run, and share code snippets in multiple languages. It features a Monaco-powered editor with syntax highlighting, customizable themes, and seamless code execution via the Piston API.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Multi-language Support**: Write and execute code in popular programming languages such as JavaScript, Python, Java, and more.
+- **User Authentication**: Secure login with Clerk for personalized experience and snippet storage.
+- **Real-time Code Execution**: Execute code instantly using the Piston API with feedback on code output or errors.
+- **Snippet Management**: Create, save, and manage your code snippets with easy access and sharing.
+- **Editor Themes**: Customize the editor theme for an optimal coding environment.
+- **Code Snippet Star Rating**: Star your favorite snippets and view their popularity.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: React.js, Monaco Editor, Next.js, Zustand, Tailwind CSS
+- **Backend**: Convex (Database & Serverless Functions), Clerk (Authentication), Piston API (Code Execution)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. **Sign Up / Log In**  
+   Use Clerk to sign up or log in to your account.
 
-To learn more about Next.js, take a look at the following resources:
+2. **Create & Run Snippets**  
+   - Select a language from the editor.  
+   - Write your code in the Monaco editor.  
+   - Click on the "Run" button to execute the code and view the output or error in real time.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Save & Manage Snippets**  
+   - Save your snippets to access them later.  
+   - View your saved snippets on the "Snippets" page.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Star Snippets**  
+   - Star snippets to mark your favorites for quick access.
 
-## Deploy on Vercel
+5. **Customize the Editor**  
+   - Change the editor theme (Light/Dark mode) from the settings.  
+   - Adjust the font size to fit your preference.
+  
+## Acknowledgements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **[Monaco Editor](https://www.npmjs.com/package/@monaco-editor/react)**: Used for code editing with syntax highlighting and error checking.
+- **[Clerk](https://clerk.dev/)**: Handles user authentication and identity management.
+- **[Convex](https://www.convex.dev/)**: Serverless database for managing user data and snippets.
+- **[Piston API](https://emkc.org/)**: Executes code in multiple languages in real-time.
+- **[Tailwind CSS](https://tailwindcss.com/)**: For building a responsive UI with utility-first CSS.
+- **[Zustand](https://github.com/pmndrs/zustand)**: State management solution for React.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
