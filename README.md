@@ -14,25 +14,23 @@ Syntaxium is a web-based code editor and execution platform that allows users to
 ## Tech Stack
 
 - **Frontend**:  
-  - **React.js**: A powerful JavaScript library for building user interfaces.
-  - **Next.js**: A React framework for building server-side rendered applications.
-  - **Monaco Editor**: A lightweight code editor for syntax highlighting and code completion.
-  - **Tailwind CSS**: A utility-first CSS framework for fast and responsive UI design.
-  - **Chakra UI**: A simple, modular, and accessible component library for React.
+  - **[React.js](https://react.dev/)**: A powerful JavaScript library for building user interfaces.
+  - **[Next.js](https://nextjs.org/)**: A React framework for building server-side rendered applications.
+  - **[Monaco Editor](https://www.npmjs.com/package/@monaco-editor/react)**: A lightweight code editor for syntax highlighting and code completion.
+  - **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for fast and responsive UI design.
 
 - **Backend**:  
-  - **Convex**: A serverless database platform for handling data and real-time operations.
-  - **Piston API**: Executes code in various programming languages, providing real-time code execution and feedback.
-  - **Clerk**: Simplifies user authentication, providing secure login and user management.
+  - **[Convex](https://www.convex.dev/)**: A serverless database platform for handling data and real-time operations.
+  - **[Piston API](https://emkc.org/)**: Executes code in various programming languages, providing real-time code execution and feedback.
 
 - **State Management**:  
-  - **Zustand**: A lightweight state management solution for React with minimal boilerplate.
+  - **[Zustand](https://github.com/pmndrs/zustand)**: A lightweight state management solution for React with minimal boilerplate.
   
 - **Authentication**:  
-  - **Clerk**: Secure, user-friendly authentication with built-in features for managing user sessions and permissions.
+  - **[Clerk](https://clerk.dev/)**: Secure, user-friendly authentication with built-in features for managing user sessions and permissions.
 
 - **Deployment**:  
-  - **Vercel**: Cloud platform for deploying and hosting Next.js applications with automatic scaling.
+  - **[Vercel](https://vercel.com/)**: Cloud platform for deploying and hosting Next.js applications with automatic scaling.
 
 
 ## Usage
@@ -56,14 +54,7 @@ Syntaxium is a web-based code editor and execution platform that allows users to
    - Change the editor theme (Light/Dark mode) from the settings.  
    - Adjust the font size to fit your preference.
   
-## Acknowledgements
 
-- **[Monaco Editor](https://www.npmjs.com/package/@monaco-editor/react)**: Used for code editing with syntax highlighting and error checking.
-- **[Clerk](https://clerk.dev/)**: Handles user authentication and identity management.
-- **[Convex](https://www.convex.dev/)**: Serverless database for managing user data and snippets.
-- **[Piston API](https://emkc.org/)**: Executes code in multiple languages in real-time.
-- **[Tailwind CSS](https://tailwindcss.com/)**: For building a responsive UI with utility-first CSS.
-- **[Zustand](https://github.com/pmndrs/zustand)**: State management solution for React.
 
 
 
