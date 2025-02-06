@@ -16,12 +16,16 @@ import FontSizeControls from "./FontSizeControls";
 
 const EditorPanel = () => {
   const clerk = useClerk();
+
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const [isSettingsDialogOpen, setIsSettingsDialogOpen] = useState(false);
+
   const { language, theme, fontSize, setFontSize, editor, setEditor } =
     useCodeEditorStore();
+
   const mounted = useMounted();
 
+  // Load code from local storage on language change or editor mount
   useEffect(() => {
     const savedCode = localStorage.getItem(`editor-code-${language}`);
     const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
@@ -29,17 +33,20 @@ const EditorPanel = () => {
     if (editor) editor.setValue(newCode);
   }, [language, editor]);
 
+  // Load font size from local storage on mount
   useEffect(() => {
     const savedFontSize = localStorage.getItem("editor-font-size");
     if (savedFontSize) setFontSize(parseInt(savedFontSize));
   }, [setFontSize]);
 
+  // Reset code to default
   const handleRefresh = () => {
     const defaultCode = LANGUAGE_CONFIG[language].defaultCode;
     if (editor) editor.setValue(defaultCode);
     localStorage.removeItem(`editor-code-${language}`);
   };
 
+  // Save code to local storage on change
   const handleEditorChange = (value: string | undefined) => {
     if (value) localStorage.setItem(`editor-code-${language}`, value);
   };
