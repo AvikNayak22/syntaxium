@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Syntaxium
 
-## Getting Started
+Syntaxium is a web-based code editor and execution platform that allows users to write, run, and share code snippets in multiple languages. It features a Monaco-powered editor with syntax highlighting, customizable themes, and seamless code execution via the Piston API.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Multi-language Support**: Write and execute code in popular programming languages such as JavaScript, Python, Java, and more.
+- **User Authentication**: Secure login with Clerk for personalized experience and snippet storage.
+- **Real-time Code Execution**: Execute code instantly using the Piston API with feedback on code output or errors.
+- **Snippet Management**: Create, save, and manage your code snippets with easy access and sharing.
+- **Editor Themes**: Customize the editor theme for an optimal coding environment.
+- **Code Snippet Star Rating**: Star your favorite snippets and view their popularity.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**:  
+  - **[React.js](https://react.dev/)**: A powerful JavaScript library for building user interfaces.
+  - **[Next.js](https://nextjs.org/)**: A React framework for building server-side rendered applications.
+  - **[Monaco Editor](https://www.npmjs.com/package/@monaco-editor/react)**: A lightweight code editor for syntax highlighting and code completion.
+  - **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for fast and responsive UI design.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Backend**:  
+  - **[Convex](https://www.convex.dev/)**: A serverless database platform for handling data and real-time operations.
+  - **[Piston API](https://emkc.org/)**: Executes code in various programming languages, providing real-time code execution and feedback.
 
-## Learn More
+- **State Management**:  
+  - **[Zustand](https://github.com/pmndrs/zustand)**: A lightweight state management solution for React with minimal boilerplate.
+  
+- **Authentication**:  
+  - **[Clerk](https://clerk.dev/)**: Secure, user-friendly authentication with built-in features for managing user sessions and permissions.
 
-To learn more about Next.js, take a look at the following resources:
+- **Deployment**:  
+  - **[Vercel](https://vercel.com/)**: Cloud platform for deploying and hosting Next.js applications with automatic scaling.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+1. **Sign Up / Log In**  
+   Use Clerk to sign up or log in to your account.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **Create & Run Snippets**  
+   - Select a language from the editor.  
+   - Write your code in the Monaco editor.  
+   - Click on the "Run" button to execute the code and view the output or error in real time.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3. **Save & Manage Snippets**  
+   - Save your snippets to access them later.  
+   - View your saved snippets on the "Snippets" page.
+
+4. **Star Snippets**  
+   - Star snippets to mark your favorites for quick access.
+
+5. **Customize the Editor**  
+   - Change the editor theme (Light/Dark mode) from the settings.  
+   - Adjust the font size to fit your preference.
+  
+
+
+
+
+
