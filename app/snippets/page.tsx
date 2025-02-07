@@ -5,17 +5,11 @@ import { useQuery } from "convex/react";
 import { useState } from "react";
 import SnippetsPageSkeleton from "./_components/SnippetsPageSkeleton";
 import NavigationHeader from "@/components/NavigationHeader";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  AlignJustify,
-  BookOpen,
-  LayoutGrid,
-  Search,
-  Tag,
-  X,
-} from "lucide-react";
-import Image from "next/image";
-import SnippetCard from "./_components/SnippetCard";
+import HeroSection from "./_components/HeroSection";
+import LanguageFilter from "./_components/LanguageFilter";
+import SearchBar from "./_components/SearchBar";
+import SnippetsGrid from "./_components/SnippetGrid";
+import ViewToggle from "./_components/ViewToggle";
 
 const SnippetsPage = () => {
   const snippets = useQuery(api.snippets.getSnippets);
@@ -23,7 +17,6 @@ const SnippetsPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [view, setView] = useState<"grid" | "list">("grid");
 
-  //loading state
   if (snippets === undefined) {
     return (
       <div className="min-h-screen">
@@ -66,144 +59,29 @@ const SnippetsPage = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black" />
 
       <div className="relative max-w-7xl mx-auto px-4 py-12">
-        {/* Hero */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-sm text-gray-300 mb-6"
-          >
-            <BookOpen className="w-4 h-4" />
-            Snippet Collection
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
-          >
-            Browse & Share You Code Snippets
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-gray-400 mb-8"
-          >
-            Find and share useful code snippets with developers worldwide
-          </motion.p>
-        </div>
-        {/* Search and Filter */}
+        <HeroSection />
+
         <div className="relative max-w-5xl mx-auto mb-12 space-y-6">
-          {/* Search Bar */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-white/5 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-            <div className="relative flex items-center">
-              <Search className="absolute left-4 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search snippets by title, language, or author..."
-                className="w-full pl-12 pr-4 py-4 bg-white/10 text-white
-                  rounded-xl border border-white/10 hover:border-white/20 transition-all duration-200
-                  placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white/20"
-              />
-            </div>
-          </div>
+          <SearchBar
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
 
-          {/* Filters */}
           <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg border border-white/10">
-              <Tag className="w-4 h-4 text-gray-400" />
-              <span className="text-sm text-gray-400">Languages:</span>
-            </div>
-
-            {popularLanguages.map((lang) => (
-              <button
-                key={lang}
-                onClick={() =>
-                  setSelectedLanguage(lang === selectedLanguage ? null : lang)
-                }
-                className={`
-                    group relative px-3 py-1.5 rounded-lg transition-all duration-200
-                    ${
-                      selectedLanguage === lang
-                        ? "text-white bg-white/20 border-2 border-white/20"
-                        : "text-gray-400 hover:text-gray-300 bg-white/10 hover:bg-white/20 border border-white/10"
-                    }
-                  `}
-              >
-                <div className="flex items-center gap-2">
-                  <Image
-                    src={`/${lang}.png`}
-                    alt={lang}
-                    className="w-4 h-4 object-contain"
-                    width={200}
-                    height={200}
-                  />
-                  <span className="text-sm">{lang}</span>
-                </div>
-              </button>
-            ))}
-
-            {selectedLanguage && (
-              <button
-                onClick={() => setSelectedLanguage(null)}
-                className="flex items-center gap-1 px-2 py-1 bg-zinc-800 rounded-lg text-xs text-gray-400 hover:text-gray-300 transition-colors"
-              >
-                <X className="w-3 h-3" />
-                Clear
-              </button>
-            )}
-
-            <div className="ml-auto flex items-center gap-3">
-              <span className="text-sm text-gray-500">
-                {filteredSnippets.length} snippets found
-              </span>
-
-              {/* View Toggle */}
-              <div className="flex items-center gap-1 p-1 bg-white/10 rounded-lg border border-white/10">
-                <button
-                  onClick={() => setView("grid")}
-                  className={`p-2 rounded-md transition-all ${
-                    view === "grid"
-                      ? "bg-white/10 text-white"
-                      : "text-gray-400 hover:text-gray-300 hover:bg-white/10"
-                  }`}
-                >
-                  <LayoutGrid className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setView("list")}
-                  className={`p-2 rounded-md transition-all ${
-                    view === "list"
-                      ? "bg-white/10 text-white"
-                      : "text-gray-400 hover:text-gray-300 hover:bg-white/10"
-                  }`}
-                >
-                  <AlignJustify className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+            <LanguageFilter
+              languages={popularLanguages}
+              selectedLanguage={selectedLanguage}
+              setSelectedLanguage={setSelectedLanguage}
+            />
+            <ViewToggle
+              view={view}
+              setView={setView}
+              snippetCount={filteredSnippets.length}
+            />
           </div>
         </div>
 
-        {/* Snippets */}
-        <motion.div
-          className={`grid gap-6 ${
-            view === "grid"
-              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-              : "grid-cols-1 max-w-3xl mx-auto"
-          }`}
-          layout
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredSnippets.map((snippet) => (
-              <SnippetCard key={snippet._id} snippet={snippet} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <SnippetsGrid snippets={filteredSnippets} view={view} />
       </div>
     </div>
   );
