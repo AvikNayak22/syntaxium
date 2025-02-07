@@ -10,16 +10,21 @@ interface StarredSnippetCardProps {
 
 const StarredSnippetCard = ({ snippet }: StarredSnippetCardProps) => (
   <div className="group relative">
+    {/* Link to the snippet details page */}
     <Link href={`/snippets/${snippet._id}`}>
+      {/* Card container */}
       <div
         className="bg-[#1a1a1a] rounded-xl border border-[#333333] hover:border-white/20 
           transition-all duration-300 overflow-hidden h-full group-hover:transform
           group-hover:scale-[1.02]"
       >
         <div className="p-6">
+          {/* Header section */}
           <div className="flex items-center justify-between mb-4">
+            {/* Language information */}
             <div className="flex items-center gap-3">
               <div className="relative">
+                {/* Background blur effect */}
                 <div className="absolute inset-0 bg-white/5 rounded-lg blur group-hover:opacity-30 transition-opacity" />
                 <Image
                   src={`/${snippet.language}.png`}
@@ -33,6 +38,7 @@ const StarredSnippetCard = ({ snippet }: StarredSnippetCardProps) => (
                 {snippet.language}
               </span>
             </div>
+            {/* Star button */}
             <div
               className="absolute top-6 right-6 z-10"
               onClick={(e) => e.preventDefault()}
@@ -53,8 +59,10 @@ const StarredSnippetCard = ({ snippet }: StarredSnippetCardProps) => (
             <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
           </div>
         </div>
+        {/* Code preview section */}
         <div className="px-6 pb-6">
           <div className="bg-black/30 rounded-lg p-4 overflow-hidden">
+            {/* Code snippet */}
             <pre className="text-sm text-gray-300 font-mono line-clamp-3">
               {snippet.code}
             </pre>

@@ -2,10 +2,15 @@
 
 import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { MinusIcon, PlusIcon, TypeIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect } from "react";
 
 const FontSizeControls = () => {
   const { fontSize, setFontSize } = useCodeEditorStore();
+
+  useEffect(() => {
+    const savedFontSize = localStorage.getItem("editor-font-size");
+    if (savedFontSize) setFontSize(parseInt(savedFontSize));
+  }, [setFontSize]);
 
   const handleFontSizeChange = (newSize: number) => {
     const size = Math.min(Math.max(newSize, 10), 24);

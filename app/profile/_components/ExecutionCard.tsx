@@ -8,6 +8,7 @@ interface ExecutionCardProps {
 
 const ExecutionCard = ({ execution }: ExecutionCardProps) => (
   <div className="group rounded-xl overflow-hidden transition-all duration-300 hover:border-white/20">
+    {/* Header section with language and timestamp */}
     <div className="flex items-center justify-between p-4 bg-[#1a1a1a] border border-[#333333] rounded-t-xl">
       <div className="flex items-center gap-4">
         <div className="relative">
@@ -20,6 +21,7 @@ const ExecutionCard = ({ execution }: ExecutionCardProps) => (
             height={40}
           />
         </div>
+        {/* Language and timestamp details */}
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-white">
@@ -30,6 +32,7 @@ const ExecutionCard = ({ execution }: ExecutionCardProps) => (
               {new Date(execution._creationTime).toLocaleString()}
             </span>
           </div>
+          {/* Execution status indicator */}
           <div className="flex items-center gap-2">
             <span
               className={`text-xs px-2 py-0.5 rounded-full ${
@@ -44,6 +47,8 @@ const ExecutionCard = ({ execution }: ExecutionCardProps) => (
         </div>
       </div>
     </div>
+
+    {/* Code and output section */}
     <div className="p-4 bg-[#1a1a1a] rounded-b-xl border border-t-0 border-[#333333]">
       <CodeBlock code={execution.code} language={execution.language} />
       {(execution.output || execution.error) && (
