@@ -64,3 +64,13 @@ export interface Snippet {
   title: string;
   userName: string;
 }
+
+export interface codeExecution {
+  _id: Id<"codeExecutions">;
+  _creationTime: number;
+  output?: string | undefined;
+  error?: string | undefined;
+  userId: string;
+  language: string;
+  code: string;
+}

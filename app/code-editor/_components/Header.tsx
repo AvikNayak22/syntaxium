@@ -12,7 +12,7 @@ const Header = async () => {
     <div className="relative z-10">
       {/* Main Header Container */}
       <div className="flex items-center md:justify-between justify-center bg-zinc-900/80 backdrop-blur-xl p-6 mb-4 rounded-lg ring-1 ring-white/10">
-        {/* Left Section - Logo and Navigation (Hidden on mobile) */}
+        {/* Left Section*/}
         <div className="flex items-center gap-8">
           {/* Logo and Brand Name */}
           <Link href="/" className="flex items-center gap-3 group relative">
@@ -64,7 +64,7 @@ const Header = async () => {
           </nav>
         </div>
 
-        {/* Right Section - Theme, Language, and Profile */}
+        {/* Right Section */}
         <div className="flex items-center gap-4">
           {/* Theme and Language Selectors */}
           <div className="hidden lg:flex items-center gap-3">
